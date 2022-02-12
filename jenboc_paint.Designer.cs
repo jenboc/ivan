@@ -83,7 +83,7 @@
             this.saveToolStripMenuItem.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.saveToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveToolStripMenuItem.Text = "Save";
             // 
             // saveAsToolStripMenuItem
@@ -91,7 +91,7 @@
             this.saveAsToolStripMenuItem.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.saveAsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveAsToolStripMenuItem.Text = "Save As";
             // 
             // closeToolStripMenuItem
@@ -99,7 +99,7 @@
             this.closeToolStripMenuItem.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.closeToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.closeToolStripMenuItem.Text = "Close";
             // 
             // settingsToolStripMenuItem
@@ -117,8 +117,9 @@
             this.changePenToolStripMenuItem.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.changePenToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.changePenToolStripMenuItem.Name = "changePenToolStripMenuItem";
-            this.changePenToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.changePenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.changePenToolStripMenuItem.Text = "Change Pen";
+            this.changePenToolStripMenuItem.Click += new System.EventHandler(this.changePenToolStripMenuItem_Click);
             // 
             // jenboc_paint
             // 

@@ -1,6 +1,6 @@
 ﻿namespace jenboc_paint
 {
-    partial class Form1
+    partial class pen_settings
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(pen_settings));
             this.label1 = new System.Windows.Forms.Label();
             this.thicknessTrackBar = new System.Windows.Forms.TrackBar();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -70,6 +70,7 @@
             this.thicknessTrackBar.Size = new System.Drawing.Size(280, 57);
             this.thicknessTrackBar.TabIndex = 5;
             this.thicknessTrackBar.Value = 3;
+            this.thicknessTrackBar.ValueChanged += new System.EventHandler(this.changePenThickness);
             // 
             // panel2
             // 
@@ -93,6 +94,7 @@
             this.pictureBox5.Size = new System.Drawing.Size(50, 50);
             this.pictureBox5.TabIndex = 4;
             this.pictureBox5.TabStop = false;
+            this.pictureBox5.Click += new System.EventHandler(this.changePenColor);
             // 
             // pictureBox4
             // 
@@ -103,6 +105,7 @@
             this.pictureBox4.Size = new System.Drawing.Size(50, 50);
             this.pictureBox4.TabIndex = 3;
             this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.changePenColor);
             // 
             // pictureBox3
             // 
@@ -113,6 +116,7 @@
             this.pictureBox3.Size = new System.Drawing.Size(50, 50);
             this.pictureBox3.TabIndex = 2;
             this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.changePenColor);
             // 
             // pictureBox2
             // 
@@ -123,6 +127,7 @@
             this.pictureBox2.Size = new System.Drawing.Size(50, 50);
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.changePenColor);
             // 
             // pictureBox1
             // 
@@ -133,8 +138,9 @@
             this.pictureBox1.Size = new System.Drawing.Size(50, 50);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.changePenColor);
             // 
-            // Form1
+            // pen_settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -143,8 +149,9 @@
             this.Controls.Add(this.thicknessTrackBar);
             this.Controls.Add(this.panel2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form1";
+            this.Name = "pen_settings";
             this.Text = "Pen Settings";
+            this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.thicknessTrackBar)).EndInit();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();

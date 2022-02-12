@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="pen_settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pen_settings.Designer.cs">
+      <DependentUpon>pen_settings.cs</DependentUpon>
+    </Compile>
     <Compile Include="jenboc_paint.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +60,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="pen_settings.resx">
+      <DependentUpon>pen_settings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="jenboc_paint.resx">
       <DependentUpon>jenboc_paint.cs</DependentUpon>
     </EmbeddedResource>

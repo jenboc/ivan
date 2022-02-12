@@ -16,7 +16,8 @@ namespace jenboc_paint
         int x = -1;
         int y = -1;
         bool mouseDown = false;
-        Pen pen;
+       
+        public static Pen pen;
 
         public jenboc_paint()
         {
@@ -29,16 +30,6 @@ namespace jenboc_paint
             pen.StartCap = pen.EndCap = System.Drawing.Drawing2D.LineCap.Round;
         }
 
-        private void changePenColor(object sender, EventArgs e) //When picturebox is clicked
-        {
-            PictureBox pBox = (PictureBox)sender;
-            pen.Color = pBox.BackColor;
-        }
-        private void changePenThickness(object sender, EventArgs e) //When trackbar is moved
-        {
-            TrackBar tBar = (TrackBar)sender;
-            pen.Width = tBar.Value;
-        }
 
         private void graphicsPanel_MouseDown(object sender, MouseEventArgs e)
         {
@@ -64,7 +55,10 @@ namespace jenboc_paint
             y = -1;
         }
 
-
-
+        private void changePenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pen_settings settings = new pen_settings();
+            settings.Show();
+        }
     }
 }
