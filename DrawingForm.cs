@@ -133,7 +133,8 @@ namespace jenboc_paint
             {
                 stream = openFileDialog.OpenFile();
 
-                if (stream != null) {
+                if (stream != null)
+                {
                     lines = Loader.Load(stream);
 
                     graphics.Clear(Color.White);
@@ -145,20 +146,32 @@ namespace jenboc_paint
             }
 
         }
-        
+
         private void clearMenuOption(object sender, EventArgs e)
         {
             graphics.Clear(Color.White);
         }
 
-        private void closeMenuOption(object sender, EventArgs e)
+
+        private void closeProgram(bool closeSelf=true)
         {
             if (settings != null)
             {
                 settings.Close();
             }
 
-            Close();
+            if (closeSelf) Close();
+        }
+
+
+        private void closeMenuOption(object sender, EventArgs e)
+        {
+            closeProgram();
+        }
+
+        private void DrawingForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            closeProgram(false);
         }
     }
 }

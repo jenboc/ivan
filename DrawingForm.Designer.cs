@@ -146,6 +146,7 @@
             this.MinimumSize = new System.Drawing.Size(1227, 690);
             this.Name = "DrawingForm";
             this.Text = "Ivan#";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DrawingForm_FormClosing);
             this.graphicsPanel.ResumeLayout(false);
             this.graphicsPanel.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
