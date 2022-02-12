@@ -37,6 +37,7 @@
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changePenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.graphicsPanel.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -72,6 +73,7 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.saveToolStripMenuItem,
             this.saveAsToolStripMenuItem,
+            this.loadToolStripMenuItem,
             this.closeToolStripMenuItem});
             this.fileToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
@@ -93,6 +95,7 @@
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
             this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveAsToolStripMenuItem.Text = "Save As";
+            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsMenuOption);
             // 
             // closeToolStripMenuItem
             // 
@@ -101,7 +104,7 @@
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
             this.closeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.closeToolStripMenuItem.Text = "Close";
-            this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
+            this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeMenuOption);
             // 
             // settingsToolStripMenuItem
             // 
@@ -120,7 +123,15 @@
             this.changePenToolStripMenuItem.Name = "changePenToolStripMenuItem";
             this.changePenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.changePenToolStripMenuItem.Text = "Change Pen";
-            this.changePenToolStripMenuItem.Click += new System.EventHandler(this.changePenToolStripMenuItem_Click);
+            this.changePenToolStripMenuItem.Click += new System.EventHandler(this.penSettingsMenuOption);
+            // 
+            // loadToolStripMenuItem
+            // 
+            this.loadToolStripMenuItem.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.loadToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadToolStripMenuItem.Text = "Load";
             // 
             // jenboc_paint
             // 
@@ -151,6 +162,7 @@
         private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem changePenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
     }
 }
 
