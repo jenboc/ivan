@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -10,6 +11,17 @@ using System.Windows.Forms;
 
 namespace jenboc_paint
 {
+    struct Line
+    {
+        public int sX;
+        public int sY;
+        public int eX;
+        public int eY;
+
+        public int width;
+        public Color color;
+    }
+
     public partial class jenboc_paint : Form
     {
         Graphics graphics;
@@ -20,24 +32,13 @@ namespace jenboc_paint
 
         public static Pen pen;
 
-        struct Line
-        {
-            public int sX;
-            public int sY;
-            public int eX;
-            public int eY;
-
-            public int width;
-            public Color color;
-        }
-
         List<Line> lines = new List<Line>();
 
 
         public jenboc_paint()
         {
             InitializeComponent();
-            
+
             graphics = graphicsPanel.CreateGraphics();
             graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
@@ -48,6 +49,7 @@ namespace jenboc_paint
         private void drawLine(Line line)
         {
             Pen linePen = new Pen(line.color, line.width);
+            linePen.StartCap = linePen.EndCap = System.Drawing.Drawing2D.LineCap.Round;
             graphics.DrawLine(linePen, new Point(line.sX, line.sY), new Point(line.eX, line.eY));
         }
 
@@ -94,8 +96,49 @@ namespace jenboc_paint
 
         private void saveAsMenuOption(object sender, EventArgs e)
         {
-            Console.WriteLine("Save As");
+            Stream stream;
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+
+            saveFileDialog.Filter = "jenboc paint files (*.jpnt) | *.jpnt";
+            saveFileDialog.FilterIndex = 1;
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                stream = saveFileDialog.OpenFile();
+
+                if (stream != null)
+                {
+                    Loader.Save(lines, stream);
+                    MessageBox.Show("Saved Successfully");
+                }
+            }
         }
+
+        private void loadMenuOption(object sender, EventArgs e)
+        {
+            Stream stream;
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            openFileDialog.Filter = "jenboc paint files (*.jpnt) | *.jpnt";
+            openFileDialog.FilterIndex = 1;
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                stream = openFileDialog.OpenFile();
+
+                if (stream != null) {
+                    lines = Loader.Load(stream);
+
+                    graphics.Clear(Color.White);
+                    foreach (Line line in lines)
+                    {
+                        drawLine(line);
+                    }
+                }
+            }
+
+        }
+
 
         private void closeMenuOption(object sender, EventArgs e)
         {
