@@ -1,0 +1,9 @@
+D:\Documents\0. Documents\Programming\gitrepos\jenboc-paint\bin\Debug\jenboc-paint.exe.config
+D:\Documents\0. Documents\Programming\gitrepos\jenboc-paint\bin\Debug\jenboc-paint.exe
+D:\Documents\0. Documents\Programming\gitrepos\jenboc-paint\bin\Debug\jenboc-paint.pdb
+D:\Documents\0. Documents\Programming\gitrepos\jenboc-paint\obj\Debug\jenboc-paint.csprojAssemblyReference.cache
+D:\Documents\0. Documents\Programming\gitrepos\jenboc-paint\obj\Debug\jenboc_paint.Properties.Resources.resources
+D:\Documents\0. Documents\Programming\gitrepos\jenboc-paint\obj\Debug\jenboc-paint.csproj.GenerateResource.cache
+D:\Documents\0. Documents\Programming\gitrepos\jenboc-paint\obj\Debug\jenboc-paint.exe
+D:\Documents\0. Documents\Programming\gitrepos\jenboc-paint\obj\Debug\jenboc-paint.pdb
+D:\Documents\0. Documents\Programming\gitrepos\jenboc-paint\obj\Debug\jenboc_paint.jenboc_paint.resources
