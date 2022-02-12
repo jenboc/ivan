@@ -25,7 +25,7 @@ namespace jenboc_paint
             graphics = graphicsPanel.CreateGraphics();
             graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             
-            pen = new Pen(Color.Black, thicknessTrackBar.Value);
+            pen = new Pen(Color.Black, 3);
             pen.StartCap = pen.EndCap = System.Drawing.Drawing2D.LineCap.Round;
         }
 
