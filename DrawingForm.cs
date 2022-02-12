@@ -145,7 +145,11 @@ namespace jenboc_paint
             }
 
         }
-
+        
+        private void clearMenuOption(object sender, EventArgs e)
+        {
+            graphics.Clear(Color.White);
+        }
 
         private void closeMenuOption(object sender, EventArgs e)
         {

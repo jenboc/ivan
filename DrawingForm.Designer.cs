@@ -33,10 +33,11 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changePenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.graphicsPanel.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -72,6 +73,7 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.saveAsToolStripMenuItem,
             this.loadToolStripMenuItem,
+            this.clearToolStripMenuItem,
             this.closeToolStripMenuItem});
             this.fileToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
@@ -86,6 +88,15 @@
             this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveAsToolStripMenuItem.Text = "Save As";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsMenuOption);
+            // 
+            // loadToolStripMenuItem
+            // 
+            this.loadToolStripMenuItem.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.loadToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadToolStripMenuItem.Text = "Load";
+            this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadMenuOption);
             // 
             // closeToolStripMenuItem
             // 
@@ -111,18 +122,18 @@
             this.changePenToolStripMenuItem.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.changePenToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.changePenToolStripMenuItem.Name = "changePenToolStripMenuItem";
-            this.changePenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.changePenToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.changePenToolStripMenuItem.Text = "Change Pen";
             this.changePenToolStripMenuItem.Click += new System.EventHandler(this.penSettingsMenuOption);
             // 
-            // loadToolStripMenuItem
+            // clearToolStripMenuItem
             // 
-            this.loadToolStripMenuItem.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.loadToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.loadToolStripMenuItem.Text = "Load";
-            this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadMenuOption);
+            this.clearToolStripMenuItem.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.clearToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clearToolStripMenuItem.Text = "Clear";
+            this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearMenuOption);
             // 
             // DrawingForm
             // 
@@ -153,6 +164,7 @@
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem changePenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem clearToolStripMenuItem;
     }
 }
 
