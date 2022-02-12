@@ -21,8 +21,12 @@ namespace jenboc_paint
         public jenboc_paint()
         {
             InitializeComponent();
+            
             graphics = graphicsPanel.CreateGraphics();
+            graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            
             pen = new Pen(Color.Black, 5);
+            pen.StartCap = pen.EndCap = System.Drawing.Drawing2D.LineCap.Round;
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
