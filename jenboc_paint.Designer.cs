@@ -71,6 +71,7 @@
             this.pictureBox3.Size = new System.Drawing.Size(50, 50);
             this.pictureBox3.TabIndex = 2;
             this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.changePenColor);
             // 
             // pictureBox2
             // 
@@ -80,6 +81,7 @@
             this.pictureBox2.Size = new System.Drawing.Size(50, 50);
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.changePenColor);
             // 
             // pictureBox1
             // 
@@ -89,7 +91,7 @@
             this.pictureBox1.Size = new System.Drawing.Size(50, 50);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.pictureBox1.Click += new System.EventHandler(this.changePenColor);
             // 
             // jenboc_paint
             // 

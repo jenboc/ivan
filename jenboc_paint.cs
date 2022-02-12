@@ -29,9 +29,10 @@ namespace jenboc_paint
             pen.StartCap = pen.EndCap = System.Drawing.Drawing2D.LineCap.Round;
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void changePenColor(object sender, EventArgs e)
         {
             PictureBox pBox = (PictureBox)sender;
+            pen.Color = pBox.BackColor;
         }
 
         private void graphicsPanel_MouseDown(object sender, MouseEventArgs e)
