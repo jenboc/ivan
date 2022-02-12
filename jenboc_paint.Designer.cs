@@ -54,6 +54,7 @@
             this.graphicsPanel.Controls.Add(this.label1);
             this.graphicsPanel.Controls.Add(this.thicknessTrackBar);
             this.graphicsPanel.Controls.Add(this.panel2);
+            this.graphicsPanel.Cursor = System.Windows.Forms.Cursors.Cross;
             this.graphicsPanel.Location = new System.Drawing.Point(0, 0);
             this.graphicsPanel.Name = "graphicsPanel";
             this.graphicsPanel.Size = new System.Drawing.Size(1215, 655);
@@ -78,6 +79,7 @@
             // pictureBox5
             // 
             this.pictureBox5.BackColor = System.Drawing.Color.White;
+            this.pictureBox5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox5.Location = new System.Drawing.Point(228, 3);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(50, 50);
@@ -88,6 +90,7 @@
             // pictureBox4
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.Black;
+            this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox4.Location = new System.Drawing.Point(172, 3);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(50, 50);
@@ -98,6 +101,7 @@
             // pictureBox3
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.Aqua;
+            this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox3.Location = new System.Drawing.Point(116, 3);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(50, 50);
@@ -108,6 +112,7 @@
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Lime;
+            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox2.Location = new System.Drawing.Point(59, 3);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(50, 50);
@@ -118,6 +123,7 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Red;
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(50, 50);
@@ -129,6 +135,7 @@
             // 
             this.thicknessTrackBar.AutoSize = false;
             this.thicknessTrackBar.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.thicknessTrackBar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.thicknessTrackBar.Location = new System.Drawing.Point(919, 74);
             this.thicknessTrackBar.Minimum = 3;
             this.thicknessTrackBar.Name = "thicknessTrackBar";
