@@ -9,16 +9,6 @@ namespace jenboc_paint
 {
     class Loader
     {
-        private static byte[] toBytes(int value)
-        {
-            byte[] bytes;
-
-            bytes = BitConverter.GetBytes(value);
-            Array.Reverse(bytes);
-
-            return bytes;
-        }
-
         private static string lineToString(Line line)
         {
             string str = "";
