@@ -25,14 +25,19 @@ namespace jenboc_paint
             graphics = graphicsPanel.CreateGraphics();
             graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             
-            pen = new Pen(Color.Black, 5);
+            pen = new Pen(Color.Black, thicknessTrackBar.Value);
             pen.StartCap = pen.EndCap = System.Drawing.Drawing2D.LineCap.Round;
         }
 
-        private void changePenColor(object sender, EventArgs e)
+        private void changePenColor(object sender, EventArgs e) //When picturebox is clicked
         {
             PictureBox pBox = (PictureBox)sender;
             pen.Color = pBox.BackColor;
+        }
+        private void changePenThickness(object sender, EventArgs e) //When trackbar is moved
+        {
+            TrackBar tBar = (TrackBar)sender;
+            pen.Width = tBar.Value;
         }
 
         private void graphicsPanel_MouseDown(object sender, MouseEventArgs e)
@@ -58,5 +63,8 @@ namespace jenboc_paint
             x = -1;
             y = -1;
         }
+
+
+
     }
 }
