@@ -65,9 +65,10 @@
             this.thicknessTrackBar.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.thicknessTrackBar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.thicknessTrackBar.Location = new System.Drawing.Point(12, 74);
+            this.thicknessTrackBar.Maximum = 25;
             this.thicknessTrackBar.Minimum = 3;
             this.thicknessTrackBar.Name = "thicknessTrackBar";
-            this.thicknessTrackBar.Size = new System.Drawing.Size(280, 57);
+            this.thicknessTrackBar.Size = new System.Drawing.Size(665, 57);
             this.thicknessTrackBar.TabIndex = 5;
             this.thicknessTrackBar.Value = 3;
             this.thicknessTrackBar.ValueChanged += new System.EventHandler(this.changePenThickness);
@@ -144,7 +145,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(296, 139);
+            this.ClientSize = new System.Drawing.Size(689, 139);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.thicknessTrackBar);
             this.Controls.Add(this.panel2);
