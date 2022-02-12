@@ -16,7 +16,7 @@ namespace jenboc_paint
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new jenboc_paint());
+            Application.Run(new DrawingForm());
         }
     }
 }

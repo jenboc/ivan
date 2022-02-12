@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace jenboc_paint
 {
-    public partial class pen_settings : Form
+    public partial class PenSettings : Form
     {
-        public pen_settings()
+        public PenSettings()
         {
             InitializeComponent();
         }
@@ -20,14 +20,14 @@ namespace jenboc_paint
         private void changePenColor(object sender, EventArgs e)
         {
             PictureBox box = (PictureBox)sender;
-            jenboc_paint.pen.Color = box.BackColor;
+            DrawingForm.pen.Color = box.BackColor;
         }
 
 
         private void changePenThickness(object sender, EventArgs e) //When trackbar is moved
         {
             TrackBar tBar = (TrackBar)sender;
-            jenboc_paint.pen.Width = tBar.Value;
+            DrawingForm.pen.Width = tBar.Value;
         }
     }
 }

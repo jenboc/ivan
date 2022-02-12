@@ -22,20 +22,20 @@ namespace jenboc_paint
         public Color color;
     }
 
-    public partial class jenboc_paint : Form
+    public partial class DrawingForm : Form
     {
         Graphics graphics;
         int x = -1;
         int y = -1;
         bool mouseDown = false;
-        pen_settings settings;
+        PenSettings settings;
 
         public static Pen pen;
 
         List<Line> lines = new List<Line>();
 
 
-        public jenboc_paint()
+        public DrawingForm()
         {
             InitializeComponent();
 
@@ -90,7 +90,7 @@ namespace jenboc_paint
 
         private void penSettingsMenuOption(object sender, EventArgs e)
         {
-            settings = new pen_settings();
+            settings = new PenSettings();
             settings.Show();
         }
 

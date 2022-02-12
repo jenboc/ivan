@@ -6,5 +6,5 @@ D:\Documents\0. Documents\Programming\gitrepos\jenboc-paint\obj\Debug\jenboc_pai
 D:\Documents\0. Documents\Programming\gitrepos\jenboc-paint\obj\Debug\jenboc-paint.csproj.GenerateResource.cache
 D:\Documents\0. Documents\Programming\gitrepos\jenboc-paint\obj\Debug\jenboc-paint.exe
 D:\Documents\0. Documents\Programming\gitrepos\jenboc-paint\obj\Debug\jenboc-paint.pdb
-D:\Documents\0. Documents\Programming\gitrepos\jenboc-paint\obj\Debug\jenboc_paint.jenboc_paint.resources
-D:\Documents\0. Documents\Programming\gitrepos\jenboc-paint\obj\Debug\jenboc_paint.pen_settings.resources
+D:\Documents\0. Documents\Programming\gitrepos\jenboc-paint\obj\Debug\jenboc_paint.PenSettings.resources
+D:\Documents\0. Documents\Programming\gitrepos\jenboc-paint\obj\Debug\jenboc_paint.DrawingForm.resources

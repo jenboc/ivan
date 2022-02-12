@@ -1,6 +1,6 @@
 ﻿namespace jenboc_paint
 {
-    partial class pen_settings
+    partial class PenSettings
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(pen_settings));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PenSettings));
             this.label1 = new System.Windows.Forms.Label();
             this.thicknessTrackBar = new System.Windows.Forms.TrackBar();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -140,7 +140,7 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.changePenColor);
             // 
-            // pen_settings
+            // PenSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -149,7 +149,7 @@
             this.Controls.Add(this.thicknessTrackBar);
             this.Controls.Add(this.panel2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "pen_settings";
+            this.Name = "PenSettings";
             this.Text = "Pen Settings";
             this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.thicknessTrackBar)).EndInit();
