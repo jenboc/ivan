@@ -48,9 +48,16 @@ namespace jenboc_paint
 
         private void drawLine(Line line)
         {
-            Pen linePen = new Pen(line.color, line.width);
-            linePen.StartCap = linePen.EndCap = System.Drawing.Drawing2D.LineCap.Round;
-            graphics.DrawLine(linePen, new Point(line.sX, line.sY), new Point(line.eX, line.eY));
+            Color oldColor = pen.Color;
+            float oldWidth = pen.Width;
+
+            pen.Color = line.color;
+            pen.Width = line.width;
+
+            graphics.DrawLine(pen, new Point(line.sX, line.sY), new Point(line.eX, line.eY));
+
+            pen.Color = oldColor;
+            pen.Width = oldWidth;
         }
 
         private void graphicsPanel_MouseDown(object sender, MouseEventArgs e)
