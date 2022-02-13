@@ -7,3 +7,4 @@ D:\Documents\0. Documents\Programming\gitrepos\ivan\obj\Release\ivan.Properties.
 D:\Documents\0. Documents\Programming\gitrepos\ivan\obj\Release\ivan.csproj.GenerateResource.cache
 D:\Documents\0. Documents\Programming\gitrepos\ivan\obj\Release\Ivan#.exe
 D:\Documents\0. Documents\Programming\gitrepos\ivan\obj\Release\Ivan#.pdb
+D:\Documents\0. Documents\Programming\gitrepos\ivan\obj\Release\ivan.csprojAssemblyReference.cache
