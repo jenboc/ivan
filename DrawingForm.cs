@@ -4,6 +4,7 @@ using System.IO;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,7 +40,7 @@ namespace jenboc_paint
         {
             InitializeComponent();
 
-            graphics = graphicsPanel.CreateGraphics();
+            graphics = GraphicsPanel.CreateGraphics();
             graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
             pen = new Pen(Color.Black, 3);
@@ -173,6 +174,14 @@ namespace jenboc_paint
         private void DrawingForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             closeProgram(false);
+        }
+
+        private void DrawingForm_SizeChanged(object sender, EventArgs e)
+        {
+            MenuStrip.Width = Width;
+            GraphicsPanel.Size = Size;
+
+            graphics = GraphicsPanel.CreateGraphics();
         }
     }
 }
