@@ -1,4 +1,4 @@
-﻿namespace jenboc_paint
+﻿namespace ivan
 {
     partial class PenSettings
     {

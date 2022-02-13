@@ -1,0 +1,9 @@
+D:\Documents\0. Documents\Programming\gitrepos\ivan\bin\Release\Ivan#.exe.config
+D:\Documents\0. Documents\Programming\gitrepos\ivan\bin\Release\Ivan#.exe
+D:\Documents\0. Documents\Programming\gitrepos\ivan\bin\Release\Ivan#.pdb
+D:\Documents\0. Documents\Programming\gitrepos\ivan\obj\Release\ivan.PenSettings.resources
+D:\Documents\0. Documents\Programming\gitrepos\ivan\obj\Release\ivan.DrawingForm.resources
+D:\Documents\0. Documents\Programming\gitrepos\ivan\obj\Release\ivan.Properties.Resources.resources
+D:\Documents\0. Documents\Programming\gitrepos\ivan\obj\Release\ivan.csproj.GenerateResource.cache
+D:\Documents\0. Documents\Programming\gitrepos\ivan\obj\Release\Ivan#.exe
+D:\Documents\0. Documents\Programming\gitrepos\ivan\obj\Release\Ivan#.pdb

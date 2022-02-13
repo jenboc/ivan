@@ -8,3 +8,13 @@ D:\Documents\0. Documents\Programming\gitrepos\jenboc-paint\obj\Debug\jenboc-pai
 D:\Documents\0. Documents\Programming\gitrepos\jenboc-paint\obj\Debug\jenboc-paint.pdb
 D:\Documents\0. Documents\Programming\gitrepos\jenboc-paint\obj\Debug\jenboc_paint.PenSettings.resources
 D:\Documents\0. Documents\Programming\gitrepos\jenboc-paint\obj\Debug\jenboc_paint.DrawingForm.resources
+D:\Documents\0. Documents\Programming\gitrepos\ivan\bin\Debug\jenboc-paint.exe.config
+D:\Documents\0. Documents\Programming\gitrepos\ivan\bin\Debug\jenboc-paint.exe
+D:\Documents\0. Documents\Programming\gitrepos\ivan\bin\Debug\jenboc-paint.pdb
+D:\Documents\0. Documents\Programming\gitrepos\ivan\obj\Debug\jenboc-paint.csprojAssemblyReference.cache
+D:\Documents\0. Documents\Programming\gitrepos\ivan\obj\Debug\jenboc_paint.PenSettings.resources
+D:\Documents\0. Documents\Programming\gitrepos\ivan\obj\Debug\jenboc_paint.DrawingForm.resources
+D:\Documents\0. Documents\Programming\gitrepos\ivan\obj\Debug\jenboc_paint.Properties.Resources.resources
+D:\Documents\0. Documents\Programming\gitrepos\ivan\obj\Debug\jenboc-paint.csproj.GenerateResource.cache
+D:\Documents\0. Documents\Programming\gitrepos\ivan\obj\Debug\jenboc-paint.exe
+D:\Documents\0. Documents\Programming\gitrepos\ivan\obj\Debug\jenboc-paint.pdb

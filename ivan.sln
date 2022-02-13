@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jenboc-paint", "jenboc-paint.csproj", "{C72F5AB4-C4A0-4282-9081-772F78F84BA8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ivan", "ivan.csproj", "{C72F5AB4-C4A0-4282-9081-772F78F84BA8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
