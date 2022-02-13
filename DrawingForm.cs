@@ -41,10 +41,10 @@ namespace jenboc_paint
             InitializeComponent();
 
             graphics = GraphicsPanel.CreateGraphics();
-            graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            graphics.SmoothingMode = SmoothingMode.AntiAlias;
 
             pen = new Pen(Color.Black, 3);
-            pen.StartCap = pen.EndCap = System.Drawing.Drawing2D.LineCap.Round;
+            pen.StartCap = pen.EndCap = LineCap.Round;
         }
 
         private void drawLine(Line line)
@@ -107,7 +107,7 @@ namespace jenboc_paint
             Stream stream;
             SaveFileDialog saveFileDialog = new SaveFileDialog();
 
-            saveFileDialog.Filter = "jenboc paint files (*.jpnt) | *.jpnt";
+            saveFileDialog.Filter = "Ivan Graphics File (*.ivan) | *.ivan";
             saveFileDialog.FilterIndex = 1;
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
@@ -127,7 +127,7 @@ namespace jenboc_paint
             Stream stream;
             OpenFileDialog openFileDialog = new OpenFileDialog();
 
-            openFileDialog.Filter = "jenboc paint files (*.jpnt) | *.jpnt";
+            openFileDialog.Filter = "Ivan Graphics File (*.ivan) | *.ivan";
             openFileDialog.FilterIndex = 1;
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)

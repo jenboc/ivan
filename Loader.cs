@@ -11,13 +11,7 @@ namespace jenboc_paint
     {
         private static string lineToString(Line line)
         {
-            string str = "";
-            str += "sX=" + line.sX + "\n";
-            str += "sY=" + line.sY + "\n";
-            str += "eX=" + line.eX + "\n";
-            str += "eY=" + line.eY + "\n";
-            str += "width=" + line.width + "\n";
-            str += "color=" + line.color.ToArgb();
+            string str = $"{line.sX},{line.sY},{line.eX},{line.eY},{line.width},{line.color.ToArgb()}";
             return str;
         }
 
@@ -48,40 +42,20 @@ namespace jenboc_paint
             stream.Read(result, 0, Convert.ToInt32(stream.Length));
 
             string sResult = Encoding.UTF8.GetString(result);
-            string[] sLines = sResult.Split('$');            
+            string[] sLines = sResult.Split('$');
 
             foreach (string sLine in sLines)
             {
                 Line line = new Line();
 
-                string[] sLineData = sLine.Split('\n');
+                string[] dataValues = sLine.Split(',');
 
-                foreach (string sData in sLineData)
-                {
-                    string[] values = sData.Split('=');
-
-                    switch (values[0])
-                    {
-                        case "sX":
-                            line.sX = Convert.ToInt32(values[1]);
-                            break;
-                        case "sY":
-                            line.sY = Convert.ToInt32(values[1]);
-                            break;
-                        case "eX":
-                            line.eX = Convert.ToInt32(values[1]);
-                            break;
-                        case "eY":
-                            line.eY = Convert.ToInt32(values[1]);
-                            break;
-                        case "width":
-                            line.width = Convert.ToInt32(values[1]);
-                            break;
-                        case "color":
-                            line.color = System.Drawing.Color.FromArgb(Convert.ToInt32(values[1]));
-                            break;
-                    }
-                }
+                line.sX = Convert.ToInt32(dataValues[0]);
+                line.sY = Convert.ToInt32(dataValues[1]);
+                line.eX = Convert.ToInt32(dataValues[2]);
+                line.eY = Convert.ToInt32(dataValues[3]);
+                line.width = Convert.ToInt32(dataValues[4]);
+                line.color = System.Drawing.Color.FromArgb(Convert.ToInt32(dataValues[5]));
 
                 lines.Add(line);
             }
