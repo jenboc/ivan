@@ -5,64 +5,50 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.Windows.Forms;
+
 namespace ivan
 {
     class Loader
     {
+        private static char[] identifiers = { 'a', 'b', 'x', 'y', 'w', 'c' };
+
+
         private static string lineToString(Line line, int[] lastStart, int[] lastEnd, int? lastWidth, int? lastColor)
         {
-            string[] lineProperties = new string[6];
-            string saveString = "";
+            string lineProperties = "";
 
-            if (line.sX != lastStart[0])
+            if (line.sX != lastStart[0] && line.sX != lastEnd[0])
             {
-                lineProperties[0] = "a" + line.sX;
+                lineProperties += "a" + line.sX;
             }
 
-            if (line.sY != lastStart[1])
+            if (line.sY != lastStart[1] && line.sY != lastEnd[1])
             {
-                lineProperties[1] = "b" + line.sY;
+                lineProperties += "b" + line.sY;
             }
 
             if (line.eX != lastEnd[0])
             {
-                lineProperties[2] = "x" + line.eX;
+                lineProperties += "x" + line.eX;
             }
 
             if (line.eY != lastEnd[1])
             {
-                lineProperties[3] = "y" + line.eY;
+                lineProperties += "y" + line.eY;
             }
 
             if (line.width != lastWidth)
             {
-                lineProperties[4] = "w" + line.width;
+                lineProperties += "w" + line.width;
             }
 
             if (line.color.ToArgb() != lastColor)
             {
-                lineProperties[5] = "c" + line.color.ToArgb();
+                lineProperties += "c" + line.color.ToArgb();
             }
 
-
-            bool firstNonNull = true;
-            foreach (string property in lineProperties)
-            {
-                if (property != null)
-                {
-                    if (!firstNonNull)
-                    {
-                        saveString += ",";
-                    }
-
-                    firstNonNull = false;
-
-                    saveString += property;
-                }
-            }
-
-
-            return saveString;
+            return lineProperties;
         }
 
 
@@ -96,6 +82,59 @@ namespace ivan
             stream.Close();
         }
 
+
+        private static bool isValidId(char identifier)
+        {
+            foreach (char id in identifiers)
+            {
+                if (id == identifier)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+
+
+        private static List<List<string>> getData(string sResult)
+        {
+            List<List<string>> dataValues = new List<List<string>>();
+            List<string> currentLine = new List<string>();
+
+            int lastIdIndex = 0;
+            for (int i = 0; i < sResult.Length; i++)
+            {
+                char character = sResult[i];
+
+                if (isValidId(character))
+                {
+                    if (i != 0) //If it's not the first identifier => add data to current line
+                    {
+                        string currentData = sResult.Substring(lastIdIndex, i-lastIdIndex);
+                        currentLine.Add(currentData);
+                    }
+
+                    int lastIdentifierIndex = Array.IndexOf(identifiers, sResult[lastIdIndex]);
+                    int currentIdIndex = Array.IndexOf(identifiers, character);
+
+                    if (currentIdIndex <= lastIdentifierIndex && i != 0)
+                    {
+                        dataValues.Add(currentLine);
+                        currentLine = new List<string>();
+                    }
+
+                    lastIdIndex = i;
+                }
+            }
+
+            currentLine.Add(sResult.Substring(lastIdIndex));
+
+            return dataValues;
+        }
+
+
         public static List<Line> Load(Stream stream)
         {
             List<Line> lines = new List<Line>();
@@ -104,7 +143,8 @@ namespace ivan
             stream.Read(result, 0, Convert.ToInt32(stream.Length));
 
             string sResult = Encoding.UTF8.GetString(result);
-            string[] sLines = sResult.Split('\n');
+
+            List<List<string>> parsedData = getData(sResult);
 
             System.Drawing.Color currentColor = System.Drawing.Color.Black;
             int currentWidth = 3;
@@ -113,17 +153,14 @@ namespace ivan
             int currentEX = -1;
             int currentEY = -1;
 
-            foreach (string sLine in sLines)
+            foreach (List<string> lineData in parsedData)
             {
                 Line line = new Line();
 
-                string[] dataValues = sLine.Split(',');
-
-
-                for (int i = 0; i < dataValues.Length; i++)
+                for (int i = 0; i < lineData.Count; i++)
                 {
-                    char identifier = dataValues[i][0];
-                    int data = Convert.ToInt32(dataValues[i].Substring(1));
+                    char identifier = lineData[i][0];
+                    int data = Convert.ToInt32(lineData[i].Substring(1));
 
                     switch (identifier)
                     {
@@ -153,12 +190,13 @@ namespace ivan
 
                 line.sX = currentSX;
                 line.sY = currentSY;
-
                 line.eX = currentEX;
                 line.eY = currentEY;
-
                 line.color = currentColor;
                 line.width = currentWidth;
+
+                currentSX = currentEX;
+                currentSY = currentEY;
 
                 lines.Add(line);
             }
