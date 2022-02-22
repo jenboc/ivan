@@ -1,4 +1,3 @@
-D:\Documents\0. Documents\Programming\gitrepos\ivan\obj\Debug\ivan.csprojAssemblyReference.cache
 D:\Documents\0. Documents\Programming\gitrepos\ivan\obj\Debug\ivan.PenSettings.resources
 D:\Documents\0. Documents\Programming\gitrepos\ivan\obj\Debug\ivan.DrawingForm.resources
 D:\Documents\0. Documents\Programming\gitrepos\ivan\obj\Debug\ivan.csproj.GenerateResource.cache
@@ -8,3 +7,5 @@ D:\Documents\0. Documents\Programming\gitrepos\ivan\bin\Debug\Ivan#.pdb
 D:\Documents\0. Documents\Programming\gitrepos\ivan\obj\Debug\ivan.Properties.Resources.resources
 D:\Documents\0. Documents\Programming\gitrepos\ivan\obj\Debug\Ivan#.exe
 D:\Documents\0. Documents\Programming\gitrepos\ivan\obj\Debug\Ivan#.pdb
+D:\Documents\0. Documents\Programming\gitrepos\ivan\obj\Debug\ivan.csproj.AssemblyReference.cache
+D:\Documents\0. Documents\Programming\gitrepos\ivan\obj\Debug\ivan.csproj.CoreCompileInputs.cache

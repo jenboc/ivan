@@ -11,41 +11,52 @@ namespace ivan
 {
     class Loader
     {
-        private static char[] identifiers = { 'a', 'b', 'x', 'y', 'w', 'c' };
+        
+        // A - Start X | B - Start Y
+        // X - End X | Y - End Y
+        // W - Width | C - Color
+        // N - New Line
+        private static char[] identifiers = { 'n', 'a', 'b', 'x', 'y', 'w', 'c'};
 
 
-        private static string lineToString(Line line, int[] lastStart, int[] lastEnd, int? lastWidth, int? lastColor)
+        private static string lineToString(Line line, int[] lastStart, int[] lastEnd, int? lastWidth, int? lastColor, ref char lastIdentifier)
         {
             string lineProperties = "";
 
             if (line.sX != lastStart[0] && line.sX != lastEnd[0])
             {
                 lineProperties += "a" + line.sX;
+                lastIdentifier = 'a';
             }
 
             if (line.sY != lastStart[1] && line.sY != lastEnd[1])
             {
                 lineProperties += "b" + line.sY;
+                lastIdentifier = 'b';
             }
 
             if (line.eX != lastEnd[0])
             {
                 lineProperties += "x" + line.eX;
+                lastIdentifier = 'x';
             }
 
             if (line.eY != lastEnd[1])
             {
                 lineProperties += "y" + line.eY;
+                lastIdentifier = 'y';
             }
 
             if (line.width != lastWidth)
             {
                 lineProperties += "w" + line.width;
+                lastIdentifier = 'w';
             }
 
             if (line.color.ToArgb() != lastColor)
             {
                 lineProperties += "c" + line.color.ToArgb();
+                lastIdentifier = 'c';
             }
 
             return lineProperties;
@@ -58,10 +69,18 @@ namespace ivan
             int lastColor = System.Drawing.Color.Black.ToArgb();
             int[] lastStartCoords = { -1, -1 };
             int[] lastEndCoords = { -1, -1 };
+            char lastIdentifier = 'c';
 
             for (int i = 0; i < lines.Count; i++)
             {
-                string sLine = lineToString(lines[i], lastStartCoords, lastEndCoords, lastWidth, lastColor);
+                int prevIdIndex = Array.IndexOf(identifiers, lastIdentifier);
+                string sLine = lineToString(lines[i], lastStartCoords, lastEndCoords, lastWidth, lastColor, ref lastIdentifier);
+
+                if (prevIdIndex < Array.IndexOf(identifiers, lastIdentifier))
+                {
+                    sLine = "n" + sLine;
+                }
+
 
                 lastWidth = lines[i].width;
                 lastColor = lines[i].color.ToArgb();
@@ -103,33 +122,35 @@ namespace ivan
             List<List<string>> dataValues = new List<List<string>>();
             List<string> currentLine = new List<string>();
 
-            int lastIdIndex = 0;
+            int lastCharIndex = 0;
             for (int i = 0; i < sResult.Length; i++)
             {
                 char character = sResult[i];
 
                 if (isValidId(character))
                 {
-                    if (i != 0) //If it's not the first identifier => add data to current line
+                    MessageBox.Show(char.ToString(character));
+                    if (i != 0 && sResult[lastCharIndex] != 'n') //If it's not the first identifier => add data to current line
                     {
-                        string currentData = sResult.Substring(lastIdIndex, i-lastIdIndex);
+                        string currentData = sResult.Substring(lastCharIndex, i-lastCharIndex); //Data between previous ID and current ID e.g. a126b => 126 (where a is prev and b is current)
                         currentLine.Add(currentData);
                     }
 
-                    int lastIdentifierIndex = Array.IndexOf(identifiers, sResult[lastIdIndex]);
+                    int lastIdentifierIndex = Array.IndexOf(identifiers, sResult[lastCharIndex]);
                     int currentIdIndex = Array.IndexOf(identifiers, character);
 
-                    if (currentIdIndex <= lastIdentifierIndex && i != 0)
+                    if ((currentIdIndex <= lastIdentifierIndex || character == 'n') && i != 0) 
                     {
                         dataValues.Add(currentLine);
                         currentLine = new List<string>();
                     }
 
-                    lastIdIndex = i;
+                    lastCharIndex = i;
                 }
             }
 
-            currentLine.Add(sResult.Substring(lastIdIndex));
+            currentLine.Add(sResult.Substring(lastCharIndex));
+            dataValues.Add(currentLine);
 
             return dataValues;
         }
@@ -161,6 +182,7 @@ namespace ivan
                 {
                     char identifier = lineData[i][0];
                     int data = Convert.ToInt32(lineData[i].Substring(1));
+        
 
                     switch (identifier)
                     {

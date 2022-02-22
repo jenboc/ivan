@@ -9,20 +9,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Numerics;
 
 namespace ivan
-{
-    struct Line
-    {
-        public int sX;
-        public int sY;
-        public int eX;
-        public int eY;
-
-        public int width;
-        public Color color;
-    }
-
+{ 
     public partial class DrawingForm : Form
     {
         Graphics graphics;
@@ -32,6 +22,7 @@ namespace ivan
         PenSettings settings;
 
         public static Pen pen;
+        public static string penShape;
 
         List<Line> lines = new List<Line>();
 
@@ -45,6 +36,7 @@ namespace ivan
 
             pen = new Pen(Color.Black, 3);
             pen.StartCap = pen.EndCap = LineCap.Round;
+            penShape = "normal";
         }
 
         private void drawLine(Line line)
@@ -55,10 +47,40 @@ namespace ivan
             pen.Color = line.color;
             pen.Width = line.width;
 
+            //MessageBox.Show($"({line.sX}, {line.sY}) => ({line.eX}, {line.eY})");
+
             graphics.DrawLine(pen, new Point(line.sX, line.sY), new Point(line.eX, line.eY));
 
             pen.Color = oldColor;
             pen.Width = oldWidth;
+        }
+
+        private void DrawStraightLine(int sX, int sY, int eX, int eY)
+        {
+            //Initialise Line
+            Line l = new Line(sX, sY, eX, eY, (int)pen.Width, pen.Color);
+
+            //Draw and save
+            drawLine(l);
+            lines.Add(l);
+        }
+
+        private void DrawSquare(MouseEventArgs e)
+        {
+            Vector2 p1 = new Vector2(x, y); //Top Left
+            Vector2 p2 = new Vector2(x, e.Y); //Bottom Left
+            Vector2 p3 = new Vector2(e.X, y); //Top Right
+            Vector2 p4 = new Vector2(e.X, e.Y); //Bottom Right
+
+            DrawStraightLine(x, y, x, e.Y);
+            DrawStraightLine(x, e.Y, e.X, e.Y);
+            DrawStraightLine(e.X, e.Y, e.X, y);
+            DrawStraightLine(e.X, y, x, y);
+
+            //P1 -> P2
+            //P1 -> P3
+            //P2 -> P4
+            //P3 -> P4
         }
 
         private void graphicsPanel_MouseDown(object sender, MouseEventArgs e)
@@ -70,20 +92,13 @@ namespace ivan
 
         private void graphicsPanel_MouseMove(object sender, MouseEventArgs e)
         {
-            if (mouseDown && (x != -1 && y != -1))
+            if (mouseDown && (x != -1 && y != -1) && penShape == "normal")
             {
-                Line newLine = new Line();
-                newLine.sX = x;
-                newLine.sY = y;
-                newLine.eX = e.X;
-                newLine.eY = e.Y;
-                newLine.width = Convert.ToInt32(pen.Width);
-                newLine.color = pen.Color;
+                Line newLine = new Line(x, y, e.X, e.Y, (int)pen.Width, pen.Color);
 
                 drawLine(newLine);
                 lines.Add(newLine);
 
-                graphics.DrawLine(pen, new Point(x, y), e.Location);
                 x = e.X;
                 y = e.Y;
             }
@@ -92,6 +107,17 @@ namespace ivan
         private void graphicsPanel_MouseUp(object sender, MouseEventArgs e)
         {
             mouseDown = false;
+
+            switch (penShape)
+            {
+                case "line":
+                    DrawStraightLine(x, y, e.X, e.Y);
+                    break;
+                case "square":
+                    DrawSquare(e);
+                    break;
+            }
+
             x = -1;
             y = -1;
         }
@@ -145,7 +171,6 @@ namespace ivan
                     }
                 }
             }
-
         }
 
         private void clearMenuOption(object sender, EventArgs e)
@@ -182,6 +207,37 @@ namespace ivan
             GraphicsPanel.Size = Size;
 
             graphics = GraphicsPanel.CreateGraphics();
+        }
+    }
+
+    class Line
+    {
+        public int sX;
+        public int sY;
+        public int eX;
+        public int eY;
+
+        public int width;
+        public Color color;
+
+        public Line() { }
+        public Line(int sX, int sY, int eX, int eY, int width, Color color)
+        {
+            this.sX = sX;
+            this.sY = sY;
+            this.eX = eX;
+            this.eY = eY;
+            this.width = width;
+            this.color = color;
+        }
+        public Line(Vector2 startPos, Vector2 endPos, int width, Color color)
+        {
+            this.sX = (int)startPos.X;
+            this.sY = (int)startPos.Y;
+            this.eX = (int)endPos.X;
+            this.eY = (int)endPos.Y;
+            this.width = width;
+            this.color = color;
         }
     }
 }

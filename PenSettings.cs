@@ -58,11 +58,16 @@ namespace ivan
             }
         }
 
-
         private void changePenColor(object sender, EventArgs e)
         {
             PictureBox box = (PictureBox)sender;
             DrawingForm.pen.Color = box.BackColor;
+        }
+
+        private void changeShape(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            DrawingForm.penShape = button.Text.ToLower();
         }
 
 
