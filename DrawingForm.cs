@@ -47,8 +47,6 @@ namespace ivan
             pen.Color = line.color;
             pen.Width = line.width;
 
-            //MessageBox.Show($"({line.sX}, {line.sY}) => ({line.eX}, {line.eY})");
-
             graphics.DrawLine(pen, new Point(line.sX, line.sY), new Point(line.eX, line.eY));
 
             pen.Color = oldColor;
@@ -67,20 +65,10 @@ namespace ivan
 
         private void DrawSquare(MouseEventArgs e)
         {
-            Vector2 p1 = new Vector2(x, y); //Top Left
-            Vector2 p2 = new Vector2(x, e.Y); //Bottom Left
-            Vector2 p3 = new Vector2(e.X, y); //Top Right
-            Vector2 p4 = new Vector2(e.X, e.Y); //Bottom Right
-
             DrawStraightLine(x, y, x, e.Y);
             DrawStraightLine(x, e.Y, e.X, e.Y);
             DrawStraightLine(e.X, e.Y, e.X, y);
             DrawStraightLine(e.X, y, x, y);
-
-            //P1 -> P2
-            //P1 -> P3
-            //P2 -> P4
-            //P3 -> P4
         }
 
         private void graphicsPanel_MouseDown(object sender, MouseEventArgs e)

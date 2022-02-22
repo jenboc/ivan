@@ -129,7 +129,6 @@ namespace ivan
 
                 if (isValidId(character))
                 {
-                    MessageBox.Show(char.ToString(character));
                     if (i != 0 && sResult[lastCharIndex] != 'n') //If it's not the first identifier => add data to current line
                     {
                         string currentData = sResult.Substring(lastCharIndex, i-lastCharIndex); //Data between previous ID and current ID e.g. a126b => 126 (where a is prev and b is current)
