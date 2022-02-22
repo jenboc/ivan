@@ -1,3 +1,8 @@
-# jenboc-paint
+# Ivan#
 
-jenboc-paint is a drawing program, that will allow you to draw with a variety of colours and pen widths, and save and load images.
+Ivan (named after Ivan Sutherland, the creator of the first drawing app: Sketchpad) is a vector drawing program, which allows you draw in many colours. 
+
+More features coming soon such as 
+- Saving (instead of having to save as)
+- Exporting as .svg file
+- Shapes
