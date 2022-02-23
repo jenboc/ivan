@@ -70,6 +70,40 @@ namespace ivan
             DrawStraightLine(e.X, e.Y, e.X, y);
             DrawStraightLine(e.X, y, x, y);
         }
+        
+        private double ConvertToRad(double degrees)
+        {
+            return degrees * (Math.PI / 180);
+        }
+
+        private void DrawCircle(MouseEventArgs e)
+        {
+            //Find radius (dX/2)  
+            float radius = Math.Abs(x - e.X) / 2;
+
+            //Find (x,y) pair + draw line
+            //Using degrees:
+            //X coordinate = radius x sin(degrees * pi/180)
+            //Y coordinate = radius x cos(degrees * pi/180)
+
+            Vector2 coordinates;
+            Vector2 oldCoordinate = new Vector2(-1f, -1f);
+
+            for (int degrees = 0; degrees < 360; degrees++)
+            {
+                double radians = ConvertToRad(degrees);
+                coordinates = new Vector2((float)(radius * Math.Sin(radians)+(e.X-radius)), (float)(radius * Math.Cos(radians)+(e.Y-radius)));
+
+                if (oldCoordinate != new Vector2(-1f, -1f))
+                {
+                    Line l = new Line(oldCoordinate, coordinates, (int)pen.Width, pen.Color);
+                    lines.Add(l);
+                    drawLine(l);
+                }
+
+                oldCoordinate = coordinates;
+            }
+        }
 
         private void graphicsPanel_MouseDown(object sender, MouseEventArgs e)
         {
@@ -103,6 +137,9 @@ namespace ivan
                     break;
                 case "square":
                     DrawSquare(e);
+                    break;
+                case "circle":
+                    DrawCircle(e);
                     break;
             }
 
