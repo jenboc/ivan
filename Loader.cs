@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using System.Windows.Forms;
+using System.Drawing.Drawing2D;
 
 namespace ivan
 {
@@ -16,10 +17,11 @@ namespace ivan
         // X - End X | Y - End Y
         // W - Width | C - Color
         // N - New Line
-        private static char[] identifiers = { 'n', 'a', 'b', 'x', 'y', 'w', 'c'};
+        // S - StartCap | E - EndCap
+        private static char[] identifiers = { 'n', 'a', 'b', 'x', 'y', 'w', 'c', 's', 'e' };
+        private static LineCap[] caps = new LineCap[] { LineCap.Round, LineCap.Square, LineCap.Triangle };
 
-
-        private static string lineToString(Line line, int[] lastStart, int[] lastEnd, int? lastWidth, int? lastColor, ref char lastIdentifier)
+        private static string lineToString(Line line, int[] lastStart, int[] lastEnd, int? lastWidth, int? lastColor, LineCap lastStartCap, LineCap lastEndCap, ref char lastIdentifier)
         {
             string lineProperties = "";
 
@@ -59,6 +61,18 @@ namespace ivan
                 lastIdentifier = 'c';
             }
 
+            if (line.startCap != lastStartCap)
+            {
+                lineProperties += "s" + Array.IndexOf(caps, line.startCap);
+                lastIdentifier = 's';
+            }
+
+            if (line.endCap != lastEndCap)
+            {
+                lineProperties += "e" + Array.IndexOf(caps, line.endCap);
+                lastIdentifier = 'e';
+            }
+
             return lineProperties;
         }
 
@@ -69,12 +83,14 @@ namespace ivan
             int lastColor = System.Drawing.Color.Black.ToArgb();
             int[] lastStartCoords = { -1, -1 };
             int[] lastEndCoords = { -1, -1 };
+            LineCap lastStart = LineCap.Round;
+            LineCap lastEnd = LineCap.Round;
             char lastIdentifier = 'c';
 
             for (int i = 0; i < lines.Count; i++)
             {
                 int prevIdIndex = Array.IndexOf(identifiers, lastIdentifier);
-                string sLine = lineToString(lines[i], lastStartCoords, lastEndCoords, lastWidth, lastColor, ref lastIdentifier);
+                string sLine = lineToString(lines[i], lastStartCoords, lastEndCoords, lastWidth, lastColor, lastStart, lastEnd, ref lastIdentifier);
 
                 if (prevIdIndex < Array.IndexOf(identifiers, lastIdentifier))
                 {
@@ -168,6 +184,8 @@ namespace ivan
             int currentSY = -1;
             int currentEX = -1;
             int currentEY = -1;
+            LineCap currentStart = LineCap.Round;
+            LineCap currentEnd = LineCap.Round;
 
             foreach (List<string> lineData in parsedData)
             {
@@ -202,6 +220,12 @@ namespace ivan
                         case 'w':
                             currentWidth = data;
                             break;
+                        case 's':
+                            currentStart = caps[data];
+                            break;
+                        case 'e':
+                            currentEnd = caps[data];
+                            break;
                     }
                 }
 
@@ -211,6 +235,8 @@ namespace ivan
                 line.eY = currentEY;
                 line.color = currentColor;
                 line.width = currentWidth;
+                line.startCap = currentStart;
+                line.endCap = currentEnd;
 
                 currentSX = currentEX;
                 currentSY = currentEY;

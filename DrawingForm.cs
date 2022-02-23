@@ -48,20 +48,26 @@ namespace ivan
         {
             Color oldColor = pen.Color;
             float oldWidth = pen.Width;
+            LineCap oldStartCap = pen.StartCap;
+            LineCap oldEndCap = pen.EndCap;
 
             pen.Color = line.color;
             pen.Width = line.width;
+            pen.StartCap = line.startCap;
+            pen.EndCap = line.endCap;
 
             graphics.DrawLine(pen, new Point(line.sX, line.sY), new Point(line.eX, line.eY));
 
             pen.Color = oldColor;
             pen.Width = oldWidth;
+            pen.StartCap = oldStartCap;
+            pen.EndCap = oldEndCap;
         }
 
         private void DrawStraightLine(int sX, int sY, int eX, int eY)
         {
             //Initialise Line
-            Line l = new Line(sX, sY, eX, eY, (int)pen.Width, pen.Color);
+            Line l = new Line(sX, sY, eX, eY, (int)pen.Width, pen.Color, pen.StartCap, pen.EndCap);
 
             //Draw and save
             drawLine(l);
@@ -101,7 +107,7 @@ namespace ivan
 
                 if (degrees > 0)
                 {
-                    Line l = new Line(oldCoordinate, coordinates, (int)pen.Width, pen.Color);
+                    Line l = new Line(oldCoordinate, coordinates, (int)pen.Width, pen.Color, pen.StartCap, pen.EndCap);
                     lines.Add(l);
                     drawLine(l);
                 }
@@ -121,7 +127,7 @@ namespace ivan
         {
             if (mouseDown && (x != -1 && y != -1) && penShape == "normal")
             {
-                Line newLine = new Line(x, y, e.X, e.Y, (int)pen.Width, pen.Color);
+                Line newLine = new Line(x, y, e.X, e.Y, (int)pen.Width, pen.Color, pen.StartCap, pen.EndCap);
 
                 drawLine(newLine);
                 lines.Add(newLine);
@@ -295,9 +301,11 @@ namespace ivan
 
         public int width;
         public Color color;
+        public LineCap startCap;
+        public LineCap endCap;
 
         public Line() { }
-        public Line(int sX, int sY, int eX, int eY, int width, Color color)
+        public Line(int sX, int sY, int eX, int eY, int width, Color color, LineCap startCap, LineCap endCap)
         {
             this.sX = sX;
             this.sY = sY;
@@ -305,8 +313,21 @@ namespace ivan
             this.eY = eY;
             this.width = width;
             this.color = color;
+            this.startCap = startCap;
+            this.endCap = endCap;
         }
-        public Line(Vector2 startPos, Vector2 endPos, int width, Color color)
+        public Line(int sX, int sY, int eX, int eY, int width, Color color, LineCap lineCap)
+        {
+            this.sX = sX;
+            this.sY = sY;
+            this.eX = eX;
+            this.eY = eY;
+            this.width = width;
+            this.color = color;
+            startCap = lineCap;
+            endCap = lineCap;
+        }
+        public Line(Vector2 startPos, Vector2 endPos, int width, Color color, LineCap startCap, LineCap endCap)
         {
             sX = (int)startPos.X;
             sY = (int)startPos.Y;
@@ -314,6 +335,8 @@ namespace ivan
             eY = (int)endPos.Y;
             this.width = width;
             this.color = color;
+            this.startCap = startCap;
+            this.endCap = endCap;
         }
     }
 }
