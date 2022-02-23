@@ -87,14 +87,14 @@ namespace ivan
             //Y coordinate = radius x cos(degrees * pi/180)
 
             Vector2 coordinates;
-            Vector2 oldCoordinate = new Vector2(-1f, -1f);
+            Vector2 oldCoordinate = Vector2.Zero;
 
             for (int degrees = 0; degrees < 360; degrees++)
             {
                 double radians = ConvertToRad(degrees);
                 coordinates = new Vector2((float)(radius * Math.Sin(radians)+(e.X-radius)), (float)(radius * Math.Cos(radians)+(e.Y-radius)));
 
-                if (oldCoordinate != new Vector2(-1f, -1f))
+                if (degrees > 0)
                 {
                     Line l = new Line(oldCoordinate, coordinates, (int)pen.Width, pen.Color);
                     lines.Add(l);
@@ -257,10 +257,10 @@ namespace ivan
         }
         public Line(Vector2 startPos, Vector2 endPos, int width, Color color)
         {
-            this.sX = (int)startPos.X;
-            this.sY = (int)startPos.Y;
-            this.eX = (int)endPos.X;
-            this.eY = (int)endPos.Y;
+            sX = (int)startPos.X;
+            sY = (int)startPos.Y;
+            eX = (int)endPos.X;
+            eY = (int)endPos.Y;
             this.width = width;
             this.color = color;
         }

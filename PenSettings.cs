@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,12 +14,21 @@ namespace ivan
     public partial class PenSettings : Form
     {
         PictureBox[] colorBoxes;
+        Dictionary<string, LineCap> lineCaps;
+
 
         public PenSettings()
         {
             InitializeComponent();
 
             colorBoxes = new PictureBox[] { pictureBox1, pictureBox2, pictureBox3, pictureBox4, pictureBox5 };
+
+            lineCaps = new Dictionary<string, LineCap>
+            { 
+                { "round", LineCap.Round },
+                { "square", LineCap.Square },
+                { "triangle", LineCap.Triangle }
+            };
         }
 
 
@@ -89,6 +99,23 @@ namespace ivan
                     shiftBoxes(cDialog.Color);
                 }
             }
+        }
+
+        private void changeStartCap(object sender, EventArgs e)
+        {
+            MouseEventArgs me = (MouseEventArgs)e;
+            string key = (string)((PictureBox)sender).Tag;
+            
+            switch (me.Button)
+            {
+                case MouseButtons.Left:
+                    DrawingForm.pen.StartCap = lineCaps[key];
+                    break;
+                case MouseButtons.Right:
+                    DrawingForm.pen.EndCap = lineCaps[key];
+                    break;
+            }           
+            
         }
     }
 }
