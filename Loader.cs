@@ -104,6 +104,8 @@ namespace ivan
                 lastStartCoords[1] = lines[i].sY;
                 lastEndCoords[0] = lines[i].eX;
                 lastEndCoords[1] = lines[i].eY;
+                lastStart = lines[i].startCap;
+                lastEnd = lines[i].endCap;
 
                 if (i != (lines.Count-1))
                 {
