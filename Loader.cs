@@ -63,7 +63,7 @@ namespace ivan
         }
 
 
-        public static void Save(List<Line> lines, Stream stream)
+        public static void Save(List<Line> lines, StreamWriter stream)
         {
             int lastWidth = 3;
             int lastColor = System.Drawing.Color.Black.ToArgb();
@@ -94,8 +94,7 @@ namespace ivan
                     sLine += "\n";
                 }
 
-                byte[] WriteData = Encoding.UTF8.GetBytes(sLine);
-                stream.Write(WriteData, 0, WriteData.Length);
+                stream.Write(sLine);
             }
 
             stream.Close();
@@ -155,14 +154,11 @@ namespace ivan
         }
 
 
-        public static List<Line> Load(Stream stream)
+        public static List<Line> Load(StreamReader stream)
         {
             List<Line> lines = new List<Line>();
 
-            byte[] result = new byte[stream.Length];
-            stream.Read(result, 0, Convert.ToInt32(stream.Length));
-
-            string sResult = Encoding.UTF8.GetString(result);
+            string sResult = stream.ReadToEnd();
 
             List<List<string>> parsedData = getData(sResult);
 

@@ -26,6 +26,8 @@ namespace ivan
 
         List<Line> lines = new List<Line>();
 
+        string currentFilePath;
+        bool unsaved;
 
         public DrawingForm()
         {
@@ -37,6 +39,9 @@ namespace ivan
             pen = new Pen(Color.Black, 3);
             pen.StartCap = pen.EndCap = LineCap.Round;
             penShape = "normal";
+
+            currentFilePath = null;
+            unsaved = false;
         }
 
         private void drawLine(Line line)
@@ -145,6 +150,9 @@ namespace ivan
 
             x = -1;
             y = -1;
+
+            unsaved = true;
+            ChangeTitle();
         }
 
         private void penSettingsMenuOption(object sender, EventArgs e)
@@ -153,9 +161,25 @@ namespace ivan
             settings.Show();
         }
 
+        private void saveMenuOption(object sender, EventArgs e)
+        {
+            if (currentFilePath == null)
+            {
+                saveAsMenuOption(sender, e);
+            }
+            else
+            {
+                File.Delete(currentFilePath);
+                Loader.Save(lines, new StreamWriter(currentFilePath));
+                unsaved = false;
+                ChangeTitle();
+            }
+        }
+
+
+
         private void saveAsMenuOption(object sender, EventArgs e)
         {
-            Stream stream;
             SaveFileDialog saveFileDialog = new SaveFileDialog();
 
             saveFileDialog.Filter = "Ivan Graphics File (*.ivan) | *.ivan";
@@ -163,11 +187,14 @@ namespace ivan
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                stream = saveFileDialog.OpenFile();
+                currentFilePath = saveFileDialog.FileName;
 
-                if (stream != null)
+                if (currentFilePath != null)
                 {
-                    Loader.Save(lines, stream);
+                    unsaved = false;
+                    ChangeTitle();
+                    StreamWriter writer = new StreamWriter(currentFilePath);
+                    Loader.Save(lines, writer);
                     MessageBox.Show("Saved Successfully");
                 }
             }
@@ -175,7 +202,6 @@ namespace ivan
 
         private void loadMenuOption(object sender, EventArgs e)
         {
-            Stream stream;
             OpenFileDialog openFileDialog = new OpenFileDialog();
 
             openFileDialog.Filter = "Ivan Graphics File (*.ivan) | *.ivan";
@@ -183,23 +209,28 @@ namespace ivan
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                stream = openFileDialog.OpenFile();
+                currentFilePath = openFileDialog.FileName;
 
-                if (stream != null)
-                {
-                    lines = Loader.Load(stream);
+                if (currentFilePath != null)
+                { 
+                    StreamReader reader = new StreamReader(currentFilePath);
+                    lines = Loader.Load(reader);
 
                     graphics.Clear(Color.White);
                     foreach (Line line in lines)
                     {
                         drawLine(line);
                     }
+                    unsaved = false;
+                    ChangeTitle();
                 }
             }
         }
 
         private void clearMenuOption(object sender, EventArgs e)
         {
+            currentFilePath = null;
+            ChangeTitle();
             graphics.Clear(Color.White);
             lines = new List<Line>();
         }
@@ -232,6 +263,26 @@ namespace ivan
             GraphicsPanel.Size = Size;
 
             graphics = GraphicsPanel.CreateGraphics();
+        }
+
+        private void ChangeTitle()
+        {
+            string newTitle = "";
+
+            if (unsaved)
+            {
+                newTitle += '*';
+            }
+
+            newTitle += "Ivan#";
+
+            if (currentFilePath != null)
+            {
+                int fileNameStartIndex = currentFilePath.LastIndexOf('\\') + 1;
+                newTitle += " - " + currentFilePath.Substring(fileNameStartIndex);
+            }
+
+            if (Text != newTitle) Text = newTitle;
         }
     }
 
