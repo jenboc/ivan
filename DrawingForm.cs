@@ -296,6 +296,11 @@ namespace ivan
 
             if (Text != newTitle) Text = newTitle;
         }
+
+        private void MenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
     }
 
     class Line

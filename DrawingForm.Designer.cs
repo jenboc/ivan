@@ -32,13 +32,13 @@
             this.GraphicsPanel = new System.Windows.Forms.Panel();
             this.MenuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changePenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.GraphicsPanel.SuspendLayout();
             this.MenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -67,6 +67,7 @@
             this.MenuStrip.Size = new System.Drawing.Size(1215, 24);
             this.MenuStrip.TabIndex = 4;
             this.MenuStrip.Text = "menuStrip1";
+            this.MenuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.MenuStrip_ItemClicked);
             // 
             // fileToolStripMenuItem
             // 
@@ -82,12 +83,24 @@
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.saveToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveMenuOption);
+            // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.saveAsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveAsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.S)));
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.saveAsToolStripMenuItem.Text = "Save As";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsMenuOption);
             // 
@@ -96,7 +109,8 @@
             this.loadToolStripMenuItem.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.loadToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.loadToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.loadToolStripMenuItem.Text = "Open";
             this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadMenuOption);
             // 
@@ -105,7 +119,8 @@
             this.clearToolStripMenuItem.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.clearToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-            this.clearToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clearToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.clearToolStripMenuItem.Text = "Clear";
             this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearMenuOption);
             // 
@@ -114,8 +129,9 @@
             this.closeToolStripMenuItem.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.closeToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.closeToolStripMenuItem.Text = "Close";
+            this.closeToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.closeToolStripMenuItem.Text = "Exit";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeMenuOption);
             // 
             // settingsToolStripMenuItem
@@ -133,18 +149,10 @@
             this.changePenToolStripMenuItem.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.changePenToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.changePenToolStripMenuItem.Name = "changePenToolStripMenuItem";
-            this.changePenToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.changePenToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
+            this.changePenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.changePenToolStripMenuItem.Text = "Change Pen";
             this.changePenToolStripMenuItem.Click += new System.EventHandler(this.penSettingsMenuOption);
-            // 
-            // saveToolStripMenuItem
-            // 
-            this.saveToolStripMenuItem.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.saveToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.saveToolStripMenuItem.Text = "Save";
-            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveMenuOption);
             // 
             // DrawingForm
             // 
