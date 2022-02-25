@@ -139,20 +139,23 @@ namespace ivan
 
         private void graphicsPanel_MouseUp(object sender, MouseEventArgs e)
         {
-            mouseDown = false;
-
-            switch (penShape)
+            if (mouseDown)
             {
-                case "line":
-                    DrawStraightLine(x, y, e.X, e.Y);
-                    break;
-                case "square":
-                    DrawSquare(e);
-                    break;
-                case "circle":
-                    DrawCircle(e);
-                    break;
+                switch (penShape)
+                {
+                    case "line":
+                        DrawStraightLine(x, y, e.X, e.Y);
+                        break;
+                    case "square":
+                        DrawSquare(e);
+                        break;
+                    case "circle":
+                        DrawCircle(e);
+                        break;
+                }
             }
+
+            mouseDown = false;
 
             x = -1;
             y = -1;
@@ -169,6 +172,7 @@ namespace ivan
 
         private void saveMenuOption(object sender, EventArgs e)
         {
+            mouseDown = false; 
             if (currentFilePath == null)
             {
                 saveAsMenuOption(sender, e);
@@ -186,6 +190,7 @@ namespace ivan
 
         private void saveAsMenuOption(object sender, EventArgs e)
         {
+            mouseDown = false;
             SaveFileDialog saveFileDialog = new SaveFileDialog();
 
             saveFileDialog.Filter = "Ivan Graphics File (*.ivan) | *.ivan";
@@ -208,6 +213,7 @@ namespace ivan
 
         private void loadMenuOption(object sender, EventArgs e)
         {
+            mouseDown = false;
             OpenFileDialog openFileDialog = new OpenFileDialog();
 
             openFileDialog.Filter = "Ivan Graphics File (*.ivan) | *.ivan";
