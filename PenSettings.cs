@@ -76,8 +76,8 @@ namespace ivan
 
         private void changeShape(object sender, EventArgs e)
         {
-            Button button = (Button)sender;
-            DrawingForm.penShape = button.Text.ToLower();
+            PictureBox pBox = (PictureBox)sender;
+            DrawingForm.penShape = (string)pBox.Tag;
         }
 
 
