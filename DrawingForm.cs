@@ -89,8 +89,11 @@ namespace ivan
 
         private void DrawCircle(MouseEventArgs e)
         {
-            //Find radius (dX/2)  
-            float radius = Math.Abs(x - e.X) / 2;
+            //Radius = start->end of drag
+            //Pythagoras: a^2 + b^2 = c^2
+            double dX = Math.Abs(x - e.X);
+            double dY = Math.Abs(y - e.Y);
+            double radius = Math.Sqrt((dX * dX) + (dY * dY));
 
             //Find (x,y) pair + draw line
             //Using degrees:
@@ -103,7 +106,7 @@ namespace ivan
             for (int degrees = 0; degrees < 360; degrees++)
             {
                 double radians = ConvertToRad(degrees);
-                coordinates = new Vector2((float)(radius * Math.Sin(radians)+(e.X-radius)), (float)(radius * Math.Cos(radians)+(e.Y-radius)));
+                coordinates = new Vector2((float)(radius * Math.Sin(radians)+x), (float)(radius * Math.Cos(radians)+y));
 
                 if (degrees > 0)
                 {
